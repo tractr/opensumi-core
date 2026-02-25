@@ -190,7 +190,11 @@ export class WorkspaceService implements IWorkspaceService {
    */
   protected getDefaultWorkspacePath(): string | undefined {
     if (this.appConfig.workspaceDir) {
-      // 默认读取传入配置路径
+      // If workspaceDir is already a URI with a scheme (s3://, gcs://, file://, etc.), return as-is
+      if (/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(this.appConfig.workspaceDir)) {
+        return this.appConfig.workspaceDir;
+      }
+      // 默认读取传入配置路径 (filesystem path → file:// URI)
       let path: string;
       try {
         // 尝试使用 Windows 下带盘符的路径进行解析

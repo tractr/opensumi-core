@@ -599,7 +599,7 @@ export class FileTreeService extends Tree implements IFileTreeService {
   }
 
   private isFileURI(str: string) {
-    return /^file:\/\//.test(str);
+    return /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(str);
   }
 
   public getNodeByPathOrUri(pathOrUri: string | URI) {

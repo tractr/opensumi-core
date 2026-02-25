@@ -450,7 +450,7 @@ export class FileTreeContribution
 
     commands.registerCommand(FILE_COMMANDS.LOCATION_WITH_EDITOR, {
       execute: () => {
-        if (this.workbenchEditorService.currentEditor?.currentUri?.scheme === Schemes.file) {
+        if (this.workbenchEditorService.currentEditor?.currentUri?.scheme != null) {
           this.revealFile(this.workbenchEditorService.currentEditor?.currentUri);
         }
       },

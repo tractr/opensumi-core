@@ -96,9 +96,17 @@ export namespace WorkspaceData {
    */
   export function transformToRelative(data: WorkspaceData, workspaceFile?: FileStat): WorkspaceData {
     const folderUris: string[] = [];
-    const workspaceFileUri = new URI(workspaceFile ? workspaceFile.uri : '').withScheme(Schemes.file);
+    const rawWorkspaceFileUri = new URI(workspaceFile ? workspaceFile.uri : '');
+    const workspaceFileUri =
+      rawWorkspaceFileUri.scheme && rawWorkspaceFileUri.scheme !== '' && rawWorkspaceFileUri.scheme !== 'file'
+        ? rawWorkspaceFileUri
+        : rawWorkspaceFileUri.withScheme(Schemes.file);
     for (const { path } of data.folders) {
-      const folderUri = new URI(path).withScheme(Schemes.file);
+      const rawFolderUri = new URI(path);
+      const folderUri =
+        rawFolderUri.scheme && rawFolderUri.scheme !== '' && rawFolderUri.scheme !== 'file'
+          ? rawFolderUri
+          : rawFolderUri.withScheme(Schemes.file);
       if (workspaceFileUri.parent.isEqualOrParent(folderUri)) {
         if (workspaceFileUri.parent.isEqual(folderUri)) {
           folderUris.push('.');

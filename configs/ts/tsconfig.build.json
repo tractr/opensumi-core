@@ -185,6 +185,15 @@
     },
     {
       "path": "./references/tsconfig.notebook.json"
+    },
+    {
+      "path": "./references/tsconfig.cloud-storage.json"
+    },
+    {
+      "path": "./references/tsconfig.multimedia-viewer.json"
+    },
+    {
+      "path": "./references/tsconfig.startup-tractr.json"
     }
   ]
 }

@@ -126,7 +126,13 @@
       "@opensumi/ide-ai-native": ["../packages/ai-native/src/index.ts"],
       "@opensumi/ide-ai-native/lib/*": ["../packages/ai-native/src/*"],
       "@opensumi/ide-notebook": ["../packages/notebook/src/index.ts"],
-      "@opensumi/ide-notebook/lib/*": ["../packages/notebook/src/*"]
+      "@opensumi/ide-notebook/lib/*": ["../packages/notebook/src/*"],
+      "@opensumi/ide-cloud-storage": ["../packages/cloud-storage/src/index.ts"],
+      "@opensumi/ide-cloud-storage/lib/*": ["../packages/cloud-storage/src/*"],
+      "@opensumi/ide-multimedia-viewer": ["../packages/multimedia-viewer/src/index.ts"],
+      "@opensumi/ide-multimedia-viewer/lib/*": ["../packages/multimedia-viewer/src/*"],
+      "@opensumi/ide-startup-tractr": ["../packages/startup-tractr/src/index.ts"],
+      "@opensumi/ide-startup-tractr/lib/*": ["../packages/startup-tractr/src/*"]
     }
   }
 }

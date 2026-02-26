@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "../../../packages/multimedia-viewer/src",
+    "outDir": "../../../packages/multimedia-viewer/lib",
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "include": ["../../../packages/multimedia-viewer/src"],
+  "exclude": ["../../../packages/multimedia-viewer/__mocks__"]
+}

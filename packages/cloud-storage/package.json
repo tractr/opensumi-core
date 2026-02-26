@@ -1,0 +1,25 @@
+{
+  "name": "@opensumi/ide-cloud-storage",
+  "version": "3.8.2",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc --build ../../configs/ts/references/tsconfig.cloud-storage.json"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.967.0",
+    "@opensumi/di": "^1.8.0",
+    "@opensumi/ide-connection": "workspace:*",
+    "@opensumi/ide-core-browser": "workspace:*",
+    "@opensumi/ide-core-common": "workspace:*",
+    "@opensumi/ide-core-node": "workspace:*",
+    "@opensumi/ide-file-service": "workspace:*",
+    "@opensumi/ide-static-resource": "workspace:*",
+    "@opensumi/ide-utils": "workspace:*"
+  }
+}

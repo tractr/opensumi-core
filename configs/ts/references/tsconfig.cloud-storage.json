@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "../../../packages/cloud-storage/src",
+    "outDir": "../../../packages/cloud-storage/lib",
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "include": ["../../../packages/cloud-storage/src"],
+  "exclude": ["../../../packages/cloud-storage/__mocks__"]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@opensumi/ide-multimedia-viewer",
+  "version": "3.8.2",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc --build ../../configs/ts/references/tsconfig.multimedia-viewer.json"
+  },
+  "dependencies": {
+    "@opensumi/di": "^1.8.0",
+    "@opensumi/ide-core-browser": "workspace:*",
+    "@opensumi/ide-core-common": "workspace:*",
+    "@opensumi/ide-editor": "workspace:*",
+    "@opensumi/ide-file-service": "workspace:*",
+    "@opensumi/ide-static-resource": "workspace:*",
+    "@uiw/react-json-view": "^2.0.0-alpha.41",
+    "@wavesurfer/react": "^1.0.12",
+    "docx-preview": "^0.3.7",
+    "react-markdown": "^10.1.0",
+    "react-papaparse": "^4.4.0",
+    "react-pdf": "^10.3.0",
+    "react-player": "^3.4.0",
+    "react-zoom-pan-pinch": "^3.7.0",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
+    "wavesurfer.js": "^7.12.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0"
+  }
+}

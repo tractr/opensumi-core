@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "../../../packages/startup-tractr/src",
+    "outDir": "../../../packages/startup-tractr/lib",
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "include": ["../../../packages/startup-tractr/src"],
+  "exclude": ["../../../packages/startup-tractr/__mocks__"]
+}

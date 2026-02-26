@@ -11,7 +11,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "run-p start:client:open start:server",
-    "start:client": "webpack-dev-server --config ./webpack.config.js",
+    "start:client": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.js",
     "start:client:open": "cross-env SUMI_DEV_OPEN_BROWSER=1 yarn start:client",
     "start:server": "cross-env IS_DEV=1 NODE_ENV=development EXT_MODE=js KTLOG_SHOW_DEBUG=1 nodemon --inspect=9999 ./entry/web/server.ts",
     "build": "tsc --build ../../configs/ts/references/tsconfig.startup-tractr.json",

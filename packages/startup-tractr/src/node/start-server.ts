@@ -13,11 +13,11 @@ export async function startServer(arg1: NodeModule[] | Partial<IServerAppOpts>) 
   process.env.EXT_MODE = 'js';
   const port = process.env.IDE_SERVER_PORT || 8000;
   const workspaceDir = process.env.WORKSPACE_DIR || path.join(__dirname, '../../workspace');
-  const extensionDir = process.env.EXTENSION_DIR || path.join(__dirname, '../../extensions');
+  const extensionDir = process.env.EXTENSION_DIR || path.join(__dirname, '../../../extension');
   const extensionHost =
-    process.env.EXTENSION_HOST_ENTRY || process.env.NODE_ENV === 'production'
-      ? path.join(__dirname, '..', '..', 'hosted/ext.process.js')
-      : path.join(__dirname, '..', '..', 'hosted/ext.process.js');
+    process.env.EXTENSION_HOST_ENTRY || path.join(__dirname, '../../../extension/lib/hosted/ext.process.js');
+  const watcherHost =
+    process.env.WATCHER_HOST_ENTRY || path.join(__dirname, '../../../file-service/lib/node/hosted/watcher.process.js');
   let opts: IServerAppOpts = {
     use: app.use.bind(app),
     processCloseExitThreshold: 5 * 60 * 1000,
@@ -25,6 +25,7 @@ export async function startServer(arg1: NodeModule[] | Partial<IServerAppOpts>) 
     staticAllowOrigin: '*',
     staticAllowPath: [workspaceDir, extensionDir, '/'],
     extHost: extensionHost,
+    watcherHost,
   };
 
   if (Array.isArray(arg1)) {

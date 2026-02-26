@@ -14,10 +14,11 @@ renderApp({
   modules: [...CommonBrowserModules, ...AIModules, ExpressFileServerModule],
   layoutConfig,
   layoutComponent: AILayout,
-  useCdnIcon: false,
+  useCdnIcon: true,
   defaultPreferences: {
     'general.theme': 'opensumi-design-dark-theme',
     'general.icon': 'vscode-icons',
+    'general.productIconTheme': 'opensumi-icons',
     'general.language': 'en-US',
   },
   designLayout: {

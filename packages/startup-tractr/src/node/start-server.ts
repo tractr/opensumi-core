@@ -13,7 +13,7 @@ export async function startServer(arg1: NodeModule[] | Partial<IServerAppOpts>) 
   process.env.EXT_MODE = 'js';
   const port = process.env.IDE_SERVER_PORT || 8000;
   const workspaceDir = process.env.WORKSPACE_DIR || path.join(__dirname, '../../workspace');
-  const extensionDir = process.env.EXTENSION_DIR || path.join(__dirname, '../../../extension');
+  const extensionDir = process.env.EXTENSION_DIR || path.join(__dirname, '../../../../tools/extensions');
   const extensionHost =
     process.env.EXTENSION_HOST_ENTRY || path.join(__dirname, '../../../extension/lib/hosted/ext.process.js');
   const watcherHost =
@@ -23,7 +23,7 @@ export async function startServer(arg1: NodeModule[] | Partial<IServerAppOpts>) 
     processCloseExitThreshold: 5 * 60 * 1000,
     terminalPtyCloseThreshold: 5 * 60 * 1000,
     staticAllowOrigin: '*',
-    staticAllowPath: [workspaceDir, extensionDir, '/'],
+    staticAllowPath: [workspaceDir, extensionDir, path.join(__dirname, '../../../extension'), '/'],
     extHost: extensionHost,
     watcherHost,
   };

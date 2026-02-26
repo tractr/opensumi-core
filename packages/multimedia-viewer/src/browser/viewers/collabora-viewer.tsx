@@ -23,7 +23,7 @@ function encodeFileId(filePath: string): string {
 function findUrlSrcByExt(xml: string, fileExt: string): string | null {
   const parser = new DOMParser();
   const doc = parser.parseFromString(xml, 'text/xml');
-  const actions = doc.querySelectorAll('action');
+  const actions = Array.from(doc.querySelectorAll('action'));
   for (const action of actions) {
     if (action.getAttribute('ext') === fileExt && action.getAttribute('name') === 'edit') {
       return action.getAttribute('urlsrc');
@@ -85,11 +85,15 @@ const CollaboraViewer: ReactEditorComponent<null> = ({ resource }) => {
 
     fetch(`${BROWSER_WOPI_HOST}/wopi/discovery`)
       .then((res) => {
-        if (!res.ok) {throw new Error(`Discovery failed: HTTP ${res.status}`);}
+        if (!res.ok) {
+          throw new Error(`Discovery failed: HTTP ${res.status}`);
+        }
         return res.text();
       })
       .then((xml) => {
-        if (cancelled) {return;}
+        if (cancelled) {
+          return;
+        }
         const urlsrc = findUrlSrcByExt(xml, bareExt);
         if (!urlsrc) {
           throw new Error(`No Collabora action found for extension: ${ext}`);

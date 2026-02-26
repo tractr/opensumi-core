@@ -4,13 +4,13 @@ import { ReactEditorComponent } from '@opensumi/ide-editor/lib/browser';
 
 // Browser → Koa server (same pattern as render-app.ts:14-17)
 const hostname = window.location.hostname || 'localhost';
-const serverPort = process.env.DEVELOPMENT ? '8000' : window.location.port;
+const serverPort = process.env.IS_DEV ? '8000' : window.location.port;
 const BROWSER_WOPI_HOST = `${window.location.protocol}//${hostname}:${serverPort}`;
 
 // Collabora Docker → Koa (host.docker.internal resolves to macOS host from inside Docker)
 const WOPI_CALLBACK_HOST =
   process.env.WOPI_CALLBACK_HOST ||
-  (process.env.DEVELOPMENT ? `http://host.docker.internal:${serverPort}` : BROWSER_WOPI_HOST);
+  (process.env.IS_DEV ? `http://host.docker.internal:${serverPort}` : BROWSER_WOPI_HOST);
 
 // Supported extensions (without dot, matching Collabora discovery XML action ext attribute)
 const SUPPORTED_EXTS = new Set(['docx', 'xlsx', 'pptx', 'xls', 'odt', 'ods', 'odp']);

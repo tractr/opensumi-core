@@ -30,7 +30,7 @@ export class CloudStaticResourceContribution implements StaticResourceContributi
 
   private getBaseUrl(): string {
     const hostname = typeof window !== 'undefined' ? window.location.hostname : 'localhost';
-    const port = process.env.DEVELOPMENT ? '8000' : typeof window !== 'undefined' ? window.location.port : '8000';
+    const port = process.env.IS_DEV ? '8000' : typeof window !== 'undefined' ? window.location.port : '8000';
     const protocol = typeof window !== 'undefined' ? window.location.protocol : 'http:';
     return `${protocol}//${hostname}${port ? ':' + port : ''}`;
   }

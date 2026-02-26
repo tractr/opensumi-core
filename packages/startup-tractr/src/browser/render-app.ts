@@ -14,17 +14,16 @@ export async function renderApp(opts: IClientAppOpts) {
 
   const hostname = window.location.hostname;
   const query = new URLSearchParams(window.location.search);
-  const serverPort = process.env.DEVELOPMENT ? 8000 : window.location.port;
-  const staticServerPort = process.env.DEVELOPMENT ? 8080 : window.location.port;
-  const webviewEndpointPort = process.env.DEVELOPMENT ? 8899 : window.location.port;
+  const isDev = process.env.IS_DEV;
+  const serverPort = isDev ? 8000 : window.location.port;
+  const staticServerPort = isDev ? 8080 : window.location.port;
+  const webviewEndpointPort = isDev ? 8899 : window.location.port;
   opts.workspaceDir = opts.workspaceDir || query.get('workspaceDir') || process.env.WORKSPACE_DIR;
 
   opts.extensionDir = opts.extensionDir || process.env.EXTENSION_DIR;
   opts.injector = injector;
-  opts.wsPath =
-    process.env.WS_PATH || window.location.protocol === 'https:'
-      ? `wss://${hostname}:${serverPort}`
-      : `ws://${hostname}:${serverPort}`;
+  const wsProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+  opts.wsPath = process.env.WS_PATH || `${wsProtocol}://${hostname}:${serverPort}`;
   opts.extWorkerHost =
     opts.extWorkerHost || process.env.EXTENSION_WORKER_HOST || `http://${hostname}:${staticServerPort}/worker-host.js`;
   opts.staticServicePath = `http://${hostname}:${serverPort}`;

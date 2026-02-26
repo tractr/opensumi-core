@@ -26,7 +26,7 @@ renderApp({
     useMergeRightWithLeftPanel: true,
   },
   defaultPanels: {
-    bottom: '@opensumi/ide-terminal-next',
+    bottom: '@opensumi/ide-output',
     right: '',
   },
 });

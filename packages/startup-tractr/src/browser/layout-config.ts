@@ -5,6 +5,9 @@ import { defaultConfig } from '@opensumi/ide-main-layout/lib/browser/default-con
 
 export const layoutConfig = {
   ...defaultConfig,
+  [SlotLocation.bottom]: {
+    modules: [],
+  },
   [SlotLocation.action]: {
     modules: ['@opensumi/ide-toolbar-action'],
   },

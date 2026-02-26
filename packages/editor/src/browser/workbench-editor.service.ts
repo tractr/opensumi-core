@@ -2208,7 +2208,7 @@ export class EditorGroup extends WithEventBus implements IGridEditorGroup {
       return;
     }
     const oldOpenType = this.currentOpenType;
-    await this.displayResourceComponent(this.currentResource!, { forceOpenType: type });
+    await this.displayResourceComponent(this.currentResource!, { forceOpenType: type, focus: true });
     this.eventBus.fire(
       new EditorGroupChangeEvent({
         group: this,

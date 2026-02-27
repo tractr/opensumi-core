@@ -1174,6 +1174,27 @@ export class EditorContribution
       },
     });
 
+    // Delegate editor.undo/redo to Monaco's undo/redo action so that
+    // Cmd+Z works when the OpenSumi keybinding system captures the event
+    // before Monaco (e.g. after switching from a component viewer to code).
+    commands.registerHandler(EDITOR_COMMANDS.UNDO.id, {
+      execute: () => {
+        const editor = this.workbenchEditorService.currentEditor;
+        if (editor?.monacoEditor) {
+          editor.monacoEditor.trigger('keyboard', 'undo', null);
+        }
+      },
+    });
+
+    commands.registerHandler(EDITOR_COMMANDS.REDO.id, {
+      execute: () => {
+        const editor = this.workbenchEditorService.currentEditor;
+        if (editor?.monacoEditor) {
+          editor.monacoEditor.trigger('keyboard', 'redo', null);
+        }
+      },
+    });
+
     commands.registerCommand(EDITOR_COMMANDS.TEST_TOKENIZE, {
       execute: () => {
         const currentCodeEditor = this.workbenchEditorService.currentCodeEditor;
